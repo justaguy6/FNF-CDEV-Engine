@@ -266,11 +266,11 @@ class Paths
 	#if sys
 	inline static private function returnSongFile(file:String):Sound
 	{
-		if (FileSystem.exists(file))
+		if (OpenFlAssets.exists(file))
 		{
 			if (!customSoundsLoaded.exists(file))
 			{
-				customSoundsLoaded.set(file, Sound.fromFile(file));
+				customSoundsLoaded.set(file, OpenFlAssets.getSound(file));
 			}
 			return customSoundsLoaded.get(file);
 		}
@@ -303,7 +303,7 @@ class Paths
 	#if USE_VIDEOS
 	inline static public function video(key:String)
 	{
-		return "assets/videos/" + key + ".mp4";
+		return SUtil.getStorageDirectory() + "assets/videos/" + key + ".mp4";
 	}
 	#end
 
@@ -372,7 +372,7 @@ class Paths
 	inline static public function createModFolder(modFolderName:String = '')
 	{
 		// FileSystem.createDirectory('cdev-mods/$modFolderName');
-		var path:String = 'cdev-mods/$modFolderName/';
+		var path:String = SUtil.getStorageDirectory() + 'cdev-mods/$modFolderName/';
 		var childrens:Array<String> = [];
 		var dumbFolders:Array<String> = [
 			            'data',    'data/charts', 'data/characters', 'data/stages', 'data/weeks', 'data/fonts', 'images', 'images/characters', 'images/icons/',
