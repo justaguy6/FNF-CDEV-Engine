@@ -54,7 +54,7 @@ class WeekData
         loadedWeeks = [];
 		for (mod in 0...Paths.curModDir.length)
 		{
-			var path:String = Paths.mods(Paths.curModDir[mod] + '/data/weeks/');
+			var path:String = Paths.mods(SUtil.getStorageDirectory() + Paths.curModDir[mod] + '/data/weeks/');
 			trace(path);
 			var weekFiles:Array<String> = [];
 
