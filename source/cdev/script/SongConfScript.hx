@@ -52,7 +52,7 @@ class SongConfScript
 		// classic script method
 		for (ext in CDevScript.haxeExts)
 		{
-			if (FileSystem.exists('cdev-mods/$mod/data/charts/$sus/script.$ext'))
+			if (FileSystem.exists(SUtil.getStorageDirectory() + 'cdev-mods/$mod/data/charts/$sus/script.$ext'))
 			{
 				p = 'cdev-mods/$mod/data/charts/$sus/script.$ext';
 				exist = true;
