@@ -64,8 +64,8 @@ class Song
 
 		if (rawJson == null)
 		{
-			#if ALLOW_MODS
-			rawJson = File.getContent(game.Paths.json(folder + '/' + jsonInput)).trim();
+			#if ALLOW_MODS 
+			rawJson = File.getContent(SUtil.getStorageDirectory() + game.Paths.json(folder + '/' + jsonInput)).trim();
 			#else
 			rawJson = Assets.getText(game.Paths.json(folder + '/' + jsonInput)).trim();
 			#end
