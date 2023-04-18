@@ -37,7 +37,7 @@ class CDevScript
 
 	public static function create(filePath:String):CDevScript
 	{
-		var path = filePath;
+		var path = SUtil.getStorageDirectory() + filePath;
 		trace('CDEVSCRIPT CREATE FUNCTION $path');
 		if (FileSystem.exists(path))
 		{
