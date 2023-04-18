@@ -15,7 +15,7 @@ import flixel.FlxG;
 import haxe.Json;
 import sys.FileSystem;
 import sys.io.File;
-
+import lime.utils.Assets;
 using StringTools;
 
 class ModPaths
@@ -46,7 +46,7 @@ class ModPaths
 
 	public function addCustomGraphic(key:String):FlxGraphic
 	{
-		if (FileSystem.exists('cdev-mods/$mod/images/$key.png'))
+		if (Assets.exists('cdev-mods/$mod/images/$key.png'))
 		{
 			trace('exist yes');
 			var newBitmap:BitmapData = BitmapData.fromFile('cdev-mods/$mod/images/$key.png');
@@ -63,7 +63,7 @@ class ModPaths
 	#if sys
 	inline static private function returnAudioFile(file:String):Sound
 	{
-		if (FileSystem.exists(file))
+		if (Assets.exists(file))
 		{
 			if (!modSoundsLoaded.exists(file))
 			{
@@ -125,7 +125,7 @@ class ModPaths
 	public function currentModFolder(key:String)
 	{
 		var checkFile:String = 'cdev-mods/' + mod + '/' + key;
-		if (FileSystem.exists(checkFile))
+		if (Assets.exists(checkFile))
 			return checkFile;
 		return 'cdev-mods/$mod/' + key;
 	}
