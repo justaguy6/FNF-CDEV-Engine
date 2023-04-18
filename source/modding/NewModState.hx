@@ -210,7 +210,7 @@ class NewModState extends states.MusicBeatState
     
         if (data.length > 0)
         {
-			File.saveContent('cdev-mods/' + modFile.modName + '/mod.json' ,data);
+			SUtil.saveContent('cdev-mods/' + modFile.modName + '/mod.json' ,data);
 		}
     }
 }
