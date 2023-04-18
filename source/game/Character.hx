@@ -88,7 +88,7 @@ class Character extends SpriteStage
 				#if ALLOW_MODS
 				var path:String = Paths.modChar(curCharacter);
 				if (!FileSystem.exists(path))
-					path = Paths.char(curCharacter);
+					path = SUtil.getStorageDirectory() + Paths.char(curCharacter);
 
 				if (!FileSystem.exists(path))
 				#else
