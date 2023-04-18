@@ -254,7 +254,7 @@ class InstallModState extends states.MusicBeatState
 		var mod:String = modShits[curSelected].modName;
 		Paths.currentMod = mod;
 
-		if (FileSystem.exists(Paths.modFolders("background.png")))
+		if (FileSystem.exists(SUtil.getStorageDirectory() + Paths.modFolders("background.png")))
 		{
 			trace("it exists");
 			
