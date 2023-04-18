@@ -105,12 +105,12 @@ class Main extends Sprite
 
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, framerate, framerate, skipSplash, startFullscreen));
 
-		#if !mobile
+		
 		// addChild(new FPS(10, 10, 0xFFFFFF));
 		fps_mem = new CDevFPSMem(10, 10, 0xffffff, true);
 		addChild(fps_mem);
 		fps_mem.visible = FlxG.save.data.performTxt;
-		#end
+		
 		FlxG.fixedTimestep = false;
 		// FlxG.camera.antialiasing = FlxG.save.data.antialiasing;
 
@@ -150,7 +150,7 @@ class Main extends Sprite
 		dateNow = dateNow.replace(" ", "_");
 		dateNow = dateNow.replace(":", "'");
 
-		filePath = "./crash/" + "CDEV-Engine_" + dateNow + ".txt";
+		filePath = SUtil.getStorageDirectory() + "./crash/" + "CDEV-Engine_" + dateNow + ".txt";
 
 		for (stackItem in callStack)
 		{
@@ -165,10 +165,10 @@ class Main extends Sprite
 
 
 		textStuff += "\nError: " + uncaught.error;
-		if (!FileSystem.exists("./crash/"))
-			FileSystem.createDirectory("./crash/");
+		if (!FileSystem.exists(SUtil.getStorageDirectory() + "./crash/"))
+			FileSystem.createDirectory(SUtil.getStorageDirectory() + "./crash/");
 
-		File.saveContent(filePath, textStuff + "\n");
+		SUtil.saveContent(filePath, textStuff + "\n");
 
 		Sys.println("Crash info file saved in" + Path.normalize(filePath));
 
@@ -181,9 +181,11 @@ class Main extends Sprite
 				conv += " ";
 		}*/
 
+		#if desktop 
 		DiscordClient.shutdown();
-
-		if (FileSystem.exists(cdev_ch_path)){
+                #end
+			 
+		if (FileSystem.exists(SUtil.getStorageDirectory() + cdev_ch_path)){
 			//cool python crash handler!
 			new Process(cdev_ch_path, [filePath]);
 		} else{
