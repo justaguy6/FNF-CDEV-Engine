@@ -75,7 +75,7 @@ class HScript extends CDevScript
 			var haxeExts = ["hx", "hsc", "hscript"];
 			for (ext in haxeExts)
 			{
-				if (FileSystem.exists('$paath.$ext'))
+				if (FileSystem.exists(SUtil.getStorageDirectory() + '$paath.$ext'))
 				{
 					paath = '$paath.$ext';
 					fileName += '.$ext';
