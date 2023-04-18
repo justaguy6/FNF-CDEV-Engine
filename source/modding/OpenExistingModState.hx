@@ -42,7 +42,7 @@ class OpenExistingModState extends states.MusicBeatState
 		FlxG.sound.volumeDownKeys = [MINUS,NUMPADMINUS];
 		FlxG.sound.volumeUpKeys = [PLUS,NUMPADPLUS];
 
-        var shit:Array<String> = FileSystem.readDirectory('cdev-mods/');
+        var shit:Array<String> = FileSystem.readDirectory(SUtil.getStorageDirectory() + 'cdev-mods/');
 
 		shit.remove('readme.txt'); //excludes readme.txt from the list.
         trace(shit);
